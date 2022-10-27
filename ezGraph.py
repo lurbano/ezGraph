@@ -2,11 +2,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 class ezGraph:
-    def __init__(self, xmin=0, xmax=10, xLabel="x", yLabel="y"):
+    def __init__(self, xmin=0, xmax=10, ymin="auto", ymax="auto", xLabel="x", yLabel="y"):
         self.x = []          
         self.y = []
         self.fig, self.ax = plt.subplots()    # initialize matplotlib plot
         plt.xlim([xmin, xmax])
+        if ymin != "auto" and ymax != "auto":
+            plt.ylim([ymin, ymax])
         self.ax.set_xlabel(xLabel)  # label axes
         self.ax.set_ylabel(yLabel)  # label axes
         self.ax.plot(self.x, self.y)               # put data into plot (line)
