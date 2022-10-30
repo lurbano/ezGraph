@@ -9,14 +9,20 @@ class ezGraph:
         plt.xlim([xmin, xmax])
         if ymin != "auto" and ymax != "auto":
             plt.ylim([ymin, ymax])
-        self.ax.set_xlabel(xLabel)  # label axes
-        self.ax.set_ylabel(yLabel)  # label axes
+        self.xLabel, self.yLabel = xLabel, yLabel
+        self.setLabels()
         self.ax.plot(self.x, self.y)               # put data into plot (line)
-        self.ax.scatter(self.x, self.y)        
+        self.ax.scatter(self.x, self.y)  
+
+    def setLabels(self):
+        self.ax.set_xlabel(self.xLabel)  # label axes
+        self.ax.set_ylabel(self.yLabel)  # label axes
 
     def add(self, x, y):
         self.x.append(x)
         self.y.append(y) 
+        self.clear()
+        self.setLabels()
         self.ax.plot(self.x, self.y)               # put data into plot
         self.ax.scatter(self.x, self.y)
 
@@ -33,8 +39,6 @@ class ezGraph:
         self.plot(y, dx)
         self.title(title)
         self.wait(dt)
-
-
 
     def wait(self, dt):
         plt.pause(dt)

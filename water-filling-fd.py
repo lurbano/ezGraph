@@ -9,7 +9,7 @@ dt = 1.
 nsteps = 20
 
 r = 2.25    # radius (cm)
-Q = 5       # Volume inflow rate: (cubic cm / s)
+Qin = 5     # Volume inflow rate: (cubic cm / s)
 h = 0       # Initial height (cm)
 
 # GRAPH
@@ -21,7 +21,7 @@ graph.add(0, h)             # add initial values
 for t in range(1, nsteps):
     modelTime = t * dt
 
-    dh = Q * dt / (np.pi * r**2)    # find the change in height
+    dh = Qin * dt / (np.pi * r**2)    # find the change in height
     h = h + dh                      # update height
     
     print(modelTime, h)
