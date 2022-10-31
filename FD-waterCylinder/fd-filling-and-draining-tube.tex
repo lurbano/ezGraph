@@ -157,7 +157,7 @@
 \usepackage{datetime}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\lhead{ Name: }
+\lhead{ }
 \rhead{\footnotesize Finite Difference Method: Cylindrical Tube (\monthname, \the\year)}
 \title{Introduction to the Finite Difference Method: \\ Filling and Draining a Cylindrical Tube}
 \author{Lensyl Urbano}
@@ -485,10 +485,10 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 		\frac{dV}{dt} \propto h
 	\end{equation}
 	
-	Converting the proportionality statement to an equation requires us to introduce a constant ($k$):
+	Converting the proportionality statement to an equation requires us to introduce a constant ($k$). Also, recognizing that this will be an outflow rate means that the flow rate should be negative:
 	\begin{equation}
 		\label{eqn:flowRate}
-		\frac{dV}{dt} = k \cdot h
+		\frac{dV}{dt} = - k \cdot h
 	\end{equation}
 	
 	As we saw when we were filling the cylinder, the change in height of water in the tube is given by the \textbf{change in height} equation:
@@ -504,12 +504,18 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	
 	So, let's substitute our flow rate equation (Eqn. \ref{eqn:flowRate}) for $\frac{dV}{dt}$ to get:
 	\begin{empheq}[]{equation}
-		\Delta h = \frac{\Delta t}{\pi r^2} \; k \cdot h
+		\Delta h = \frac{\Delta t}{\pi r^2} \; (- k \cdot h )
+	\end{empheq}
+
+	which simplifies to:
+	\begin{empheq}[]{equation}
+		\Delta h = - \frac{\Delta t}{\pi r^2} \; k \cdot h
 	\end{empheq}
 	
 	Important to note for the computer model, is that the height ($h$) used in this equation is the old height from the previous timestep so:
 	\begin{empheq}[box=\fbox]{equation}
-		\Delta h = \frac{\Delta t}{\pi r^2} \; k \cdot h_{old}
+		\label{eqn:dh_drain}
+		\Delta h = - \frac{\Delta t}{\pi r^2} \; k \cdot h_{old}
 	\end{empheq}
 	
 	and we can still update the new height using:
@@ -621,10 +627,94 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	This is an exponential function. If $K$ is less than 1 ($K<1$) then this is a decay curve.
 	
 	
-\chapter{Simultaneously Filling and Draining}
+\chapter{Model Calibration}
+	
+	We have a model that shows the general patterns we expect when filling and draining the tube: linear increase for filling at a constant rate, and exponential decay for draining due to gravity. But can these models reflect the actual thing?
+	
+	Fortunately, we have some experimental data, thanks to my pre-Calculus class. 
+	
+	We'll start with the filling portion of the model.
+	
+	\section{Filling Calibration}
+		\begin{tikzpicture}[remember picture,overlay,shift={(current page.east)}]
+			\node[anchor=north east,xshift=-1cm](myImage){
+				\includegraphics[width=6cm]{filling-data.pdf} 
+			};
+			\node[inner sep=0pt,text width=0.5\linewidth] (myCaption) [below=of myImage]
+			{\captionof{figure}{\label{drainingModel} Experimental data from filling the cylinder. }};
+		\end{tikzpicture}	
+		\begin{table}[h!]
+			\caption{Experimental Data from Filling the Cylinder.}
+			\centering
+			\begin{tabular}{||c | c||} 
+				\hline
+				time (s) & height (cm) \\ [0.5ex] 
+				\hline\hline
+				1	& 0 \\
+				7	& 10 \\
+				12	& 20 \\
+				16.8	& 30 \\
+				21.5	& 40 \\
+				26.2	& 50 \\ [1ex] 
+				\hline
+			\end{tabular}
+		\end{table}
+	
+	
+	Recall that, at the core of the model, is the change in height equation (Eqn. \ref{dh_eqn}):
+	\begin{empheq}[]{equation*}
+		\Delta h = \frac{\Delta t}{\pi r^2} \; Q 
+	\end{empheq}
+		
+	The radius ($r$) is measured and we choose $\Delta t$ as steps in the simulation, so the only unknown is the inflow rate ($Q$).
+	
+	
+	\section{Breaking the Model}
+		Experiment by changing the parameters to find the limits of the model. Questions to ask are:
+		
+		\begin{enumerate}
+			\item What is the largest timestep you can use with this model.
+			\item What happens when you change the $k$ coefficient? How large can you make it?
+		\end{enumerate}
+	
+		What you should find is that at for some values the model starts to oscillate out of control. This is one of the limitations of finite difference models. It requires pretty extreme settings in this example, but other models the unstable parameter values can be much closer to the values we want to use.
+	
+	
+\chapter{Expanding the Model}
 
-Our program is already set up to handle filling and draining.
+	As we've seen, modifying the basic model for different conditions can be pretty easy. In the base model (water filling) the change in height equation (Eqn. \ref{dh_eqn}) was:
+	\begin{empheq}[]{equation*}
+		\Delta h = \frac{\Delta t}{\pi r^2} \; Q 
+	\end{empheq}
+	
+	To adjust for draining (Eqn. \ref{eqn:dh_drain}), we just needed to make the inflow value ($Q$) an equation that adjusts for the fact that the water outflow rate is negative and depends on the height of water in the tube.
+	\begin{empheq}[]{equation*}
+		\Delta h = \frac{\Delta t}{\pi r^2} \; (- k \cdot h)
+	\end{empheq}
+	
+	
+	
+	\section{Simultaneously Filling and Draining}
+		\begin{tikzpicture}[remember picture,overlay,shift={(current page.east)}]
+			\node[anchor=north east,xshift=-1cm](myImage){
+				\includegraphics[height=5cm]{water-fill-and-drain.png} 
+			};
+			\node[inner sep=0pt,text width=0.5\linewidth] (myCaption) [below=of myImage]
+			{\captionof{figure}{\label{drainingModel} The model indicates that filling the cylinder while the hole is still open would result in the water rising to an equilibrium height of about 4.7 cm. }};
+		\end{tikzpicture}
+		
+		Our program is already set up to handle filling and draining. We simply need to change the inflow value ($Q_{in}$). 
+		
+		
+		\textbf{What happens if we try to fill the tube while the hole in the bottom is open so it simultaneously drains?}
+		
+		Set the inflow value to 5 cm$^3$/s, set the initial height ($h$) to 0, and keep the draining parameters, we should see the water level increase until it reaches an equilibrium.
+	
 
+	\section{Problems}
+	
+	\subsection{Cone}
+		What would happen if the water container was conical instead of a cylinder? Say the radius increases by 1 cm for every 10 cm increase in height?
 
  % Stop your text
  \end{document}
