@@ -641,7 +641,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 				\includegraphics[width=6cm]{filling-data.pdf} 
 			};
 			\node[inner sep=0pt,text width=0.5\linewidth] (myCaption) [below=of myImage]
-			{\captionof{figure}{\label{drainingModel} Experimental data from filling the cylinder. }};
+			{\captionof{figure}{\label{drainingModel} Experimental data from filling the cylinder. Data by Blas. }};
 		\end{tikzpicture}	
 		\begin{table}[h!]
 			\centering
@@ -657,7 +657,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 				26.2	& 50 \\ [1ex] 
 				\hline
 			\end{tabular}
-			\caption{Experimental Data from filling the cylinder.}
+			\caption{Experimental Data from filling the cylinder. Data by Blas.}
 		\end{table}
 	
 	
@@ -682,6 +682,32 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	\textit{water-filling-calibration.py}
 	\lstinputlisting[language=Python, frame=single]{../water-filling-calibration.py}
 	
+	
+	\section{Draining Calibration}
+		\begin{tikzpicture}[remember picture,overlay,shift={(current page.east)}]
+			\node[anchor=north east,xshift=-1cm](myImage){
+				\includegraphics[width=6cm]{draining-data.pdf} 
+			};
+			\node[inner sep=0pt,text width=0.5\linewidth] (myCaption) [below=of myImage]
+			{\captionof{figure}{\label{drainingModel} Experimental data from draining the cylinder. A linear trendline is included to highlight the curvature of the data. Data produced by Coen and Blas.}};
+		\end{tikzpicture}	
+		\begin{table}[h!]
+			\centering
+			\begin{tabular}{||c | c||} 
+				\hline
+				time (s) & height (cm) \\ [0.5ex] 
+				\hline\hline
+				0	& 50 \\
+				28	& 40 \\
+				60	& 30 \\
+				101	& 20 \\
+				157	& 10 \\ [1ex] 
+				\hline
+			\end{tabular}
+			\caption{Experimental Data from draining the cylinder. Data by Coen and Blas.}
+		\end{table}
+	
+	\textbf{Assignment}: Use this experimental data to calibrate the draining portion of the model.
 	
 	
 	\section{Breaking the Model}
@@ -724,12 +750,24 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 		\textbf{What happens if we try to fill the tube while the hole in the bottom is open so it simultaneously drains?}
 		
 		Set the inflow value to 5 cm$^3$/s, set the initial height ($h$) to 0, and keep the draining parameters, we should see the water level increase until it reaches an equilibrium.
+		
+		\textbf{Model Equilibrium}: Now, if you have not already, set the inflow value and $k$ coefficient to the values you got from your calibrations and determine the equilibrium height of water in the tube. 
 	
 
-	\section{Problems}
+\chapter{Exercises}
+
+	\section{Rectangular Prism}
+		Create a model for the filling of a water container where the container was a rectangular prism instead of a cylinder, where the radius increases by 1 cm for every 2 cm increase in height?
 	
-	\subsection{Cone}
-		What would happen if the water container was conical instead of a cylinder? Say the radius increases by 1 cm for every 10 cm increase in height?
+	\section{Cone}
+		Create a model for the filling of a water container where the container was conical instead of a cylinder, where the radius increases by 1 cm for every 2 cm increase in height?
+		
+		\begin{figure}[h!]
+			\begin{center}
+				\includegraphics[width=0.75\textwidth]{cone-rh.pdf}
+				\caption{Comparison of measured (blue) and modeled (red) data. This version of the model uses $Q=10$ cm$^3$/s.}
+			\end{center}
+		\end{figure}
 
  % Stop your text
  \end{document}
