@@ -6,16 +6,17 @@ from ezGraph import *
 
 # PARAMETERS
 dt = 1
-nsteps = 25
+nsteps = 30
 
 r = 2.25    # radius (cm)
-Qin = 10       # Volume inflow rate (dV/dt): (cubic cm / s)
+Qin = 30       # Volume inflow rate (dV/dt): (cubic cm / s)
 h = 0       # Initial height (cm)
 k = 0.0     # outflow rate constant
 
 # EXPERIMENTAL DATA
-x_measured = [1, 7, 12, 16.8, 21.5, 26.2]
+x_measured = [1, 7, 12, 17, 22, 26]
 y_measured = [0, 10, 20, 30, 40, 50]
+y_modeled = []
 
 # GRAPH
 graph = ezGraphMM(xmin=0, xmax=100, 
@@ -40,9 +41,16 @@ for t in range(1, nsteps):
     dh = dVdt * dt / (np.pi * r**2)
     h = h + dh
     
-    print(modelTime, h)
+    if (modelTime in x_measured):
+        print(modelTime, h)
+        y_modeled.append(h)
     graph.addModeled(modelTime, h)
     graph.wait(0.1)
+
+print("h_measured:", y_measured)
+print("h_modeled:", y_modeled)
+
+# calculate average values for y_measured and y_modeled
 
 # DRAW GRAPH
 graph.keepOpen()
