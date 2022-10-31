@@ -10,7 +10,7 @@
 \usepackage{empheq}
 \usepackage{capt-of}
 
-
+%\usepackage[print]{booklet}
 
 % To use UTF-8 characters
 \usepackage[utf8x]{inputenc}
@@ -644,7 +644,6 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 			{\captionof{figure}{\label{drainingModel} Experimental data from filling the cylinder. }};
 		\end{tikzpicture}	
 		\begin{table}[h!]
-			\caption{Experimental Data from Filling the Cylinder.}
 			\centering
 			\begin{tabular}{||c | c||} 
 				\hline
@@ -658,6 +657,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 				26.2	& 50 \\ [1ex] 
 				\hline
 			\end{tabular}
+			\caption{Experimental Data from filling the cylinder.}
 		\end{table}
 	
 	
@@ -667,6 +667,21 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	\end{empheq}
 		
 	The radius ($r$) is measured and we choose $\Delta t$ as steps in the simulation, so the only unknown is the inflow rate ($Q$).
+	
+	Therefore, to calibrate the model we adjust $Q$ until the model output matches the experimental data.
+	
+	\begin{figure}[h!]
+		\begin{center}
+		\includegraphics[width=0.75\textwidth]{filling-calibration-Q=10.png}
+		\caption{Comparison of measured (blue) and modeled (red) data. This version of the model uses $Q=10$ cm$^3$/s.}
+		\end{center}
+	\end{figure}
+	
+	In order to produce this graph, we use the \textit{ezGraphMM} class, which allows us to plot the measured and modeled data separately. The full code is here:
+	
+	\textit{water-filling-calibration.py}
+	\lstinputlisting[language=Python, frame=single]{../water-filling-calibration.py}
+	
 	
 	
 	\section{Breaking the Model}

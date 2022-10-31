@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.4.27)  30 OCT 2022 20:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.4.27)  31 OCT 2022 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1194,6 +1194,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 644--644
  []
 
 [17 <./filling-data.pdf>]
+<filling-calibration-Q=10.png, id=406, 462.528pt x 346.896pt>
+File: filling-calibration-Q=10.png Graphic file (type png)
+<use filling-calibration-Q=10.png>
+Package pdftex.def Info: filling-calibration-Q=10.png  used on input line 675.
+(pdftex.def)             Requested size: 234.73521pt x 176.05182pt.
+ (../water-filling-calibration.py
+Underfull \vbox (badness 1210) has occurred while \output is active []
+
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1202,42 +1211,60 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[18]
+[18 <./filling-calibration-Q=10.png>])
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[19]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[20]
 Chapter 4.
-<water-fill-and-drain.png, id=414, 462.528pt x 346.896pt>
+<water-fill-and-drain.png, id=475, 462.528pt x 346.896pt>
 File: water-fill-and-drain.png Graphic file (type png)
 <use water-fill-and-drain.png>
-Package pdftex.def Info: water-fill-and-drain.png  used on input line 700.
+Package pdftex.def Info: water-fill-and-drain.png  used on input line 715.
 (pdftex.def)             Requested size: 189.6871pt x 142.26378pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--703
+Underfull \hbox (badness 10000) in paragraph at lines 718--718
 []\OT1/cmr/m/n/10.95 Figure 4.1: [][] The model in-di-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--703
+Underfull \hbox (badness 10000) in paragraph at lines 718--718
 \OT1/cmr/m/n/10.95 cates that fill-ing the cylin-der
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--703
+Underfull \hbox (badness 10000) in paragraph at lines 718--718
 \OT1/cmr/m/n/10.95 while the hole is still open
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--703
+Underfull \hbox (badness 10000) in paragraph at lines 718--718
 \OT1/cmr/m/n/10.95 would re-sult in the wa-ter ris-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 703--703
+Underfull \hbox (badness 10000) in paragraph at lines 718--718
 \OT1/cmr/m/n/10.95 ing to an equi-lib-rium height of
  []
 
 
 Underfull \vbox (badness 7907) has occurred while \output is active []
 
- [19
+ [21
 
  <./water-fill-and-drain.png>]
 
@@ -1248,7 +1275,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[20] (./fd-filling-and-draining-tube.aux)
+[22] (./fd-filling-and-draining-tube.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1257,10 +1284,10 @@ anged.
 (rerunfilecheck)             Checksum: DBA023CAB24C94506E1D36D0F662894B;3245.
  ) 
 Here is how much of TeX's memory you used:
- 25401 strings out of 478862
- 459632 string characters out of 5858945
+ 25471 strings out of 478862
+ 460856 string characters out of 5858945
  1152487 words of memory out of 6000000
- 42328 multiletter control sequences out of 15000+600000
+ 42342 multiletter control sequences out of 15000+600000
  411398 words of font info for 54 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  84i,12n,89p,1031b,2160s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1278,10 +1305,10 @@ r8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on fd-filling-and-draining-tube.pdf (20 pages, 279680 bytes).
+Output written on fd-filling-and-draining-tube.pdf (22 pages, 299825 bytes).
 PDF statistics:
- 523 PDF objects out of 1000 (max. 8388607)
- 469 compressed objects within 5 object streams
- 234 named destinations out of 1000 (max. 500000)
- 190 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 594 PDF objects out of 1000 (max. 8388607)
+ 535 compressed objects within 6 object streams
+ 286 named destinations out of 1000 (max. 500000)
+ 195 words of extra memory for PDF output out of 10000 (max. 10000000)
 
