@@ -683,6 +683,45 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	\lstinputlisting[language=Python, frame=single]{../water-filling-calibration.py}
 	
 	
+	\section{Calibration Analysis: r$^2$}
+	
+		To determine how good a match we have (instead of just eyeballing it) we'll calculate the regression coefficient ($r^2$) value using a series of assignments.
+	
+		\subsection{Selecting time data}
+		\textbf{Assignment \qn}: 
+		
+		Adapt the model so it records the water heights (in an array) at the same times as the measured data (you may round the measured times to whole integers to make it easier).
+		
+		\subsection{Sum of the errors/residuals}
+		\textbf{Assignment \qn}: 
+		
+		Write a function that takes the measured heights and the corresponding modeled heights and returns the \textbf{sum of all the errors} ($e$). The \textit{error} is simply the difference between the measured and the modeled value. The error is sometimes referred to as the \textbf{residual}.
+		\begin{equation}
+			e = h_{measured} - h_{modeled}
+		\end{equation}
+		so your function should return the sum of all the errors ($E$):
+		\begin{equation}
+			E = \sum e = \sum (h_{measured} - h_{modeled})
+		\end{equation}
+	
+		\subsection{Differences from the mean}
+		\textbf{Assignment \qn}:
+		
+		Write a function that finds the sum of all the differences between the measured heights and their mean ($\mu$).
+		\begin{equation}
+			D = \sum (h_{measured} - \mu)
+		\end{equation}
+	
+		\subsection{$r^2$}
+		\textbf{Assignment \qn}:
+		
+		The regression coefficient ($r^2$) is given by one minus the sum of all the errors squared divided by the sum of the differences from the mean squared:
+		\begin{equation}
+			r^2 = 1 - \frac{E^2}{D^2}
+		\end{equation}
+		Write a function that calculates the $r^2$ value.
+	
+	
 	\section{Draining Calibration}
 		\begin{tikzpicture}[remember picture,overlay,shift={(current page.east)}]
 			\node[anchor=north east,xshift=-1cm](myImage){
@@ -707,7 +746,11 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 			\caption{Experimental Data from draining the cylinder. Data by Coen and Blas.}
 		\end{table}
 	
-	\textbf{Assignment}: Use this experimental data to calibrate the draining portion of the model.
+	\textbf{Assignment \qn}: 
+	
+	Use this experimental data to calibrate the draining portion of the model.
+	
+
 	
 	
 	\section{Breaking the Model}
@@ -752,12 +795,31 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 		Set the inflow value to 5 cm$^3$/s, set the initial height ($h$) to 0, and keep the draining parameters, we should see the water level increase until it reaches an equilibrium.
 		
 		\textbf{Model Equilibrium}: Now, if you have not already, set the inflow value and $k$ coefficient to the values you got from your calibrations and determine the equilibrium height of water in the tube. 
+		
+	\section{Time-variable Inputs: Changing Inflow}
+	
+	\subsection{Stopping Inflow}
+	\textbf{Assignment \qn}: 
+	
+		Adapt the model so that the water input stops after 50 seconds.
+		
+	\subsection{Variable Inflow}
+	\textbf{Assignment \qn}: 
+	
+		Change the model so that the water input varies in a sinusoidal (wave) pattern with the function:
+		\begin{equation}
+			Q = 10 \sin{(5t)} + 11
+		\end{equation}
+		
 	
 
-\chapter{Exercises}
+\chapter{Water Tank Exercises}
 
 	\section{Rectangular Prism}
-		Create a model for the filling of a water container where the container was a rectangular prism instead of a cylinder, where the radius increases by 1 cm for every 2 cm increase in height?
+	
+	\textbf{Assignment \qn}: 
+	
+		Create a model for the filling of a water tank that is a rectangular prism with a width of 10 cm and a length of 5 cm.
 		
 		\begin{figure}[h!]
 			\begin{center}
@@ -767,6 +829,8 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 		\end{figure}
 	
 	\section{Cone}
+	\textbf{Assignment \qn}: 
+	
 		Create a model for the filling of a water container where the container was conical instead of a cylinder, where the radius increases by 1 cm for every 2 cm increase in height?
 		
 		\begin{figure}[h!]
@@ -775,6 +839,102 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 				\caption{Conical water container.}
 			\end{center}
 		\end{figure}
+
+
+\chapter{Ballistic Motion: A ball in the Air}
+
+	Here we'll see how to create models based off of governing differential equations. First we attempt to find the height of a ball that is thrown upwards.
+	
+  \section{Acceleration and Velocity}
+	For a ball flying through the air, the only force acting on it is gravity (we're ignoring friction with the air for now). If we do the physics we find that the acceleration ($a$) of a ballistic object is constant no matter the size or mass of the object.
+
+	As we know, acceleration is the change in velocity with time so:
+	\begin{empheq}[box=\fbox]{equation}
+		a = \frac{dv}{dt}
+	\end{empheq}
+
+	This we can \textbf{discretize} as such:
+	\begin{equation}
+		\frac{dv}{dt} = \frac{\Delta v}{\Delta t}
+	\end{equation}
+
+	so that:
+	\begin{equation}
+	a = \frac{\Delta v}{\Delta t}
+	\end{equation}
+
+	since velocity is changing over time:
+	\begin{equation}
+		a = \frac{v_{new} - v_{old}}{\Delta t}
+	\end{equation}
+
+	So if we know our starting velocity ($v_{old}$) and our acceleration and set a timestep ($\Delta t$) we can solve this equation to calculate the new velocity:
+	\begin{empheq}[box=\fbox]{equation}
+		\label{eqn:v_new}
+		v_{new} = v_{old} +  a \cdot \Delta t 
+	\end{empheq}
+
+
+  \section{Height and Velocity}
+  	What we want to find is the height of the ball, and we do so by recalling that velocity (in an up-down direction) is the change in height ($y$) over time:
+  	\begin{equation}
+  		v = \frac{dy}{dt}
+  	\end{equation}
+  
+  	Which we can discritize in the same way we did for acceleration to get a very similar equation to Eqn. \ref{eqn:v_new} to calculate height ($y$):
+  	\begin{empheq}[box=\fbox]{equation}
+  		\label{eqn:h_new}
+  		y_{new} = y_{old} + v \cdot \Delta t
+  	\end{empheq}
+  	
+  	With these two equations (Eqns. \ref{eqn:v_new} and \ref{eqn:h_new}), we can now create a model to simulate the height of the ball.
+
+
+  \section{Model}
+	
+	\subsection{Parameters}
+	First we set our \textbf{parameters}. Acceleration due to gravity ($g$) is:
+	\begin{equation}
+		g = -9.8 \; m/s^2
+	\end{equation}
+	It's negative because it's acting downwards.
+	
+	We also need to set a timestep ($\Delta t = 0.1$)and a length for the simulation, which we set as the number of steps (45 steps).
+
+	\subsection{Initial Values}
+	Next we set the initial values:
+	\begin{eqnarray}
+		v_0 &= 20 \; m/s \\
+		y_0 &= 0  \; m
+	\end{eqnarray}
+	We will also need to initialize our output, which in this case is the graph.
+	
+	\subsection{Time Loop}
+	Run through the given number of timesteps and calculate the height in each iteration.
+	
+	\subsection{Code}
+	The final code may look like this:
+
+	\lstinputlisting[language=Python, frame=single]{../ball.py}
+	
+
+
+  \section{Analysis}
+  
+  	\subsection{Maximum Height}
+  	Assignment \qn:
+  	
+  	Have your program find the maximum height of the ball and the time when it reaches it. Compare your result to the analytical solutions (look them up).
+
+	\subsection{Hitting the Ground}
+	Assignment \qn:
+	
+	Have your program find the moment when the ball hits the ground.
+	
+
+\chapter{Energy Balance Model}
+
+	If there were no atmosphere, what would the average temperature at the surface of the Earth?
 
  % Stop your text
  \end{document}
