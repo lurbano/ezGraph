@@ -85,7 +85,13 @@
 
 
 
-
+\newcommand{\assignment}[1]{
+	\begin{tcolorbox}
+		\textbf{Assignment \qn}: 
+		
+		#1
+	\end{tcolorbox}
+}
 
 
 
@@ -747,9 +753,11 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 			\caption{Experimental Data from draining the cylinder. Data by Coen and Blas.}
 		\end{table}
 	
-	\textbf{Assignment \qn}: 
+	\assignment{
+		Use this experimental data to calibrate the draining portion of the model.
+	}
 	
-	Use this experimental data to calibrate the draining portion of the model.
+	
 	
 
 	
@@ -800,15 +808,15 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	\section{Time-variable Inputs: Changing Inflow}
 	
 	\subsection{Stopping Inflow}
-	\tcbox[colback=blue!30, colframe=blue!30!black]{
-	\textbf{Assignment \qn}: 
+
+	\assignment{
 	
 		Adapt the model so that the water input stops after 50 seconds. Use the calibrated fill rate ($Q_{in}$) for the initial inflow rate, and allow the model to drain using the calibrated $k$ coefficient.
 	}
 		
 	\subsection{Variable Inflow}
 
-	\textbf{Assignment \qn}: 
+	\assignment{
 	
 		Change the model so that the water input varies in a sinusoidal (wave) pattern with the function:
 		\begin{equation}
@@ -817,37 +825,39 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	
 		Allow the model to drain using the calibrated $k$ value.
 
-		
+	}
+
+
 	\subsection{DYO Simulation}
-		\textbf{Assignment \qn}: 
+		\assignment{
 		
 			Design your own simulation scenario and share it with the class.
-		
+		}
 	
 	\newpage
     \section{Water Tank Exercises}
 
 	\subsection{Rectangular Prism}
 	
-	\textbf{Assignment \qn}: 
+	\assignment{
 	
 		Create a model for the filling of a water tank that is a rectangular prism with a width of 10 cm and a length of 5 cm.
-		
-		\begin{figure}[h!]
-			\begin{center}
-				\includegraphics[height=5cm]{prism-lwh.pdf}
-				\caption{Water Tank}
-			\end{center}
-		\end{figure}
-	
+	}
+	\begin{figure}[h!]
+		\begin{center}
+			\includegraphics[height=4.5cm]{prism-lwh.pdf}
+			\caption{Water Tank}
+		\end{center}
+	\end{figure}
+
 	\subsection{Cone}
-	\textbf{Assignment \qn}: 
+	\assignment{
 	
 		Create a model for the filling of a water container where the container was conical instead of a cylinder, where the radius increases by 1 cm for every 2 cm increase in height?
-		
+	}
 		\begin{figure}[h!]
 			\begin{center}
-				\includegraphics[height=5cm]{cone-rh.pdf}
+				\includegraphics[height=4.5cm]{cone-rh.pdf}
 				\caption{Conical water container.}
 			\end{center}
 		\end{figure}
