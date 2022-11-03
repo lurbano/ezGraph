@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.4.27)  1 NOV 2022 17:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.4.27)  2 NOV 2022 17:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -991,7 +991,7 @@ Chapter 1.
 
 pdfTeX warning: /usr/bin/pdflatex (file ./cylinder-rh.pdf): PDF inclusion: foun
 d PDF version <1.7>, but at most version <1.5> allowed
-<cylinder-rh.pdf, id=189, 135.40878pt x 261.31679pt>
+<cylinder-rh.pdf, id=201, 135.40878pt x 261.31679pt>
 File: cylinder-rh.pdf Graphic file (type pdf)
 <use cylinder-rh.pdf>
 Package pdftex.def Info: cylinder-rh.pdf  used on input line 190.
@@ -1040,7 +1040,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [6]
-<water-filling-fd.png, id=262, 462.528pt x 346.896pt>
+<water-filling-fd.png, id=274, 462.528pt x 346.896pt>
 File: water-filling-fd.png Graphic file (type png)
 <use water-filling-fd.png>
 Package pdftex.def Info: water-filling-fd.png  used on input line 370.
@@ -1124,7 +1124,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 485--485
 [11
 
 ]
-<water-draining-fd.png, id=386, 462.528pt x 346.896pt>
+<water-draining-fd.png, id=398, 462.528pt x 346.896pt>
 File: water-draining-fd.png Graphic file (type png)
 <use water-draining-fd.png>
 Package pdftex.def Info: water-draining-fd.png  used on input line 545.
@@ -1206,7 +1206,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 Chapter 3.
-<filling-data.pdf, id=481, 602.25pt x 372.39125pt>
+<filling-data.pdf, id=493, 602.25pt x 372.39125pt>
 File: filling-data.pdf Graphic file (type pdf)
 <use filling-data.pdf>
 Package pdftex.def Info: filling-data.pdf  used on input line 648.
@@ -1222,7 +1222,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 651--651
  []
 
 [17 <./filling-data.pdf>]
-<filling-calibration-Q=10.png, id=498, 462.528pt x 346.896pt>
+<filling-calibration-Q=10.png, id=510, 462.528pt x 346.896pt>
 File: filling-calibration-Q=10.png Graphic file (type png)
 <use filling-calibration-Q=10.png>
 Package pdftex.def Info: filling-calibration-Q=10.png  used on input line 682.
@@ -1239,7 +1239,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[18 <./filling-calibration-Q=10.png>])
+[18 <./filling-calibration-Q=10.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[19]
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 6
+3.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
+)
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 693.
@@ -1253,31 +1273,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 693.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[19]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 722.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 722.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 722.
-
-
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
 (fancyhdr)                \setlength{\headheight}{13.59999pt}.
@@ -1286,33 +1281,63 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [20]
-<draining-data.pdf, id=580, 577.15625pt x 372.39125pt>
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[21]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 781.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 781.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 781.
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[22]
+<draining-data.pdf, id=618, 577.15625pt x 372.39125pt>
 File: draining-data.pdf Graphic file (type pdf)
 <use draining-data.pdf>
-Package pdftex.def Info: draining-data.pdf  used on input line 735.
+Package pdftex.def Info: draining-data.pdf  used on input line 796.
 (pdftex.def)             Requested size: 170.71652pt x 110.14993pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 738--738
+Underfull \hbox (badness 10000) in paragraph at lines 799--799
 []\OT1/cmr/m/n/10.95 Figure 3.3: [][] Ex-per-i-men-tal data
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 738--738
+Underfull \hbox (badness 10000) in paragraph at lines 799--799
 \OT1/cmr/m/n/10.95 from drain-ing the cylin-der. A
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 738--738
+Underfull \hbox (badness 10000) in paragraph at lines 799--799
 \OT1/cmr/m/n/10.95 lin-ear trend-line is in-cluded to
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 738--738
+Underfull \hbox (badness 10000) in paragraph at lines 799--799
 \OT1/cmr/m/n/10.95 high-light the cur-va-ture of the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 738--738
+Underfull \hbox (badness 10000) in paragraph at lines 799--799
 \OT1/cmr/m/n/10.95 data. Data pro-duced by Coen
  []
 
@@ -1324,50 +1349,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[21 <./draining-data.pdf>]
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 13.59999pt, for example:
-(fancyhdr)                \setlength{\headheight}{13.59999pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
-
-[22
-
-]
-Chapter 4.
-<water-fill-and-drain.png, id=607, 462.528pt x 346.896pt>
-File: water-fill-and-drain.png Graphic file (type png)
-<use water-fill-and-drain.png>
-Package pdftex.def Info: water-fill-and-drain.png  used on input line 793.
-(pdftex.def)             Requested size: 189.6871pt x 142.26378pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 796--796
-[]\OT1/cmr/m/n/10.95 Figure 4.1: [][] The model in-di-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 796--796
-\OT1/cmr/m/n/10.95 cates that fill-ing the cylin-der
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 796--796
-\OT1/cmr/m/n/10.95 while the hole is still open
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 796--796
-\OT1/cmr/m/n/10.95 would re-sult in the wa-ter ris-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 796--796
-\OT1/cmr/m/n/10.95 ing to an equi-lib-rium height of
- []
-
-[23 <./water-fill-and-drain.png>]
+[23 <./draining-data.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1377,22 +1359,65 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
 [24]
+Chapter 4.
+<water-fill-and-drain.png, id=647, 462.528pt x 346.896pt>
+File: water-fill-and-drain.png Graphic file (type png)
+<use water-fill-and-drain.png>
+Package pdftex.def Info: water-fill-and-drain.png  used on input line 854.
+(pdftex.def)             Requested size: 189.6871pt x 142.26378pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 857--857
+[]\OT1/cmr/m/n/10.95 Figure 4.1: [][] The model in-di-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 857--857
+\OT1/cmr/m/n/10.95 cates that fill-ing the cylin-der
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 857--857
+\OT1/cmr/m/n/10.95 while the hole is still open
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 857--857
+\OT1/cmr/m/n/10.95 would re-sult in the wa-ter ris-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 857--857
+\OT1/cmr/m/n/10.95 ing to an equi-lib-rium height of
+ []
+
+[25
+
+ <./water-fill-and-drain.png>]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 13.59999pt, for example:
+(fancyhdr)                \setlength{\headheight}{13.59999pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
+
+[26]
 
 pdfTeX warning: /usr/bin/pdflatex (file ./prism-lwh.pdf): PDF inclusion: found 
 PDF version <1.7>, but at most version <1.5> allowed
-<prism-lwh.pdf, id=621, 190.08446pt x 262.59688pt>
+<prism-lwh.pdf, id=662, 190.08446pt x 262.59688pt>
 File: prism-lwh.pdf Graphic file (type pdf)
 <use prism-lwh.pdf>
-Package pdftex.def Info: prism-lwh.pdf  used on input line 848.
+Package pdftex.def Info: prism-lwh.pdf  used on input line 909.
 (pdftex.def)             Requested size: 92.68102pt x 128.0374pt.
 
 
 pdfTeX warning: /usr/bin/pdflatex (file ./cone-rh.pdf): PDF inclusion: found PD
 F version <1.7>, but at most version <1.5> allowed
-<cone-rh.pdf, id=622, 159.21352pt x 298.84258pt>
+<cone-rh.pdf, id=663, 159.21352pt x 298.84258pt>
 File: cone-rh.pdf Graphic file (type pdf)
 <use cone-rh.pdf>
-Package pdftex.def Info: cone-rh.pdf  used on input line 860.
+Package pdftex.def Info: cone-rh.pdf  used on input line 921.
 (pdftex.def)             Requested size: 68.2151pt x 128.0374pt.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1402,7 +1427,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[25 <./prism-lwh.pdf> <./cone-rh.pdf>]
+[27 <./prism-lwh.pdf> <./cone-rh.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1411,11 +1436,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[26
+[28
 
 ]
 Chapter 5.
-[27]
+[29]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1424,7 +1449,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[28] (../ball.py
+[30] (../ball.py
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1433,7 +1458,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[29])
+[31])
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 13.59999pt, for example:
@@ -1442,9 +1467,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.59999pt}.
 
-[30]
+[32]
 Chapter 6.
-[31
+[33
 
 ] (./fd-filling-and-draining-tube.aux)
 
@@ -1452,13 +1477,13 @@ LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `fd-filling-and-draining-tube.out' has not ch
 anged.
-(rerunfilecheck)             Checksum: EEE247EF188D7C41751AC8BA2F3B4984;6737.
+(rerunfilecheck)             Checksum: 53EC11FD21FBBC65F8EB74BA52CD2F24;7379.
  ) 
 Here is how much of TeX's memory you used:
- 27376 strings out of 478862
- 507801 string characters out of 5858945
- 1237579 words of memory out of 6000000
- 44118 multiletter control sequences out of 15000+600000
+ 27439 strings out of 478862
+ 508725 string characters out of 5858945
+ 1265579 words of memory out of 6000000
+ 44154 multiletter control sequences out of 15000+600000
  412464 words of font info for 58 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  83i,12n,89p,1031b,2160s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1477,10 +1502,10 @@ cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on fd-filling-and-draining-tube.pdf (31 pages, 367342 bytes).
+Output written on fd-filling-and-draining-tube.pdf (33 pages, 376382 bytes).
 PDF statistics:
- 883 PDF objects out of 1000 (max. 8388607)
- 799 compressed objects within 8 object streams
- 399 named destinations out of 1000 (max. 500000)
- 394 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 927 PDF objects out of 1000 (max. 8388607)
+ 840 compressed objects within 9 object streams
+ 423 named destinations out of 1000 (max. 500000)
+ 418 words of extra memory for PDF output out of 10000 (max. 10000000)
 

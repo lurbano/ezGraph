@@ -2,6 +2,15 @@ import numpy as np
 import time 
 from ezGraph import *
 
+def myAvg(lst):
+    # sum 
+    s = 0
+    n = 0
+    for i in lst:
+        s = s + i
+        n += 1
+    return s/n
+
 # Finite Difference Model
 
 # PARAMETERS
@@ -44,12 +53,14 @@ for t in range(1, nsteps):
     if (modelTime in x_measured):
         print(modelTime, h)
         y_modeled.append(h)
+
     graph.addModeled(modelTime, h)
-    graph.wait(0.1)
+    graph.wait(0.01)
 
 print("h_measured:", y_measured)
 print("h_modeled:", y_modeled)
 
+print(f'avg measured = {myAvg(y_measured)}')
 # calculate average values for y_measured and y_modeled
 
 # DRAW GRAPH

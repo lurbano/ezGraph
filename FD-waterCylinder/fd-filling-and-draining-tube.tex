@@ -690,43 +690,104 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	\lstinputlisting[language=Python, frame=single]{../water-filling-calibration.py}
 	
 	
-	\section{Calibration Analysis: r$^2$}
+	\section{How Good are Our Results: Finding the r$^2$ Value}
 	
 		To determine how good a match we have (instead of just eyeballing it) we'll calculate the regression coefficient ($r^2$) value using a series of assignments.
 	
 		\subsection{Selecting time data}
-		\textbf{Assignment \qn}: 
+		\assignment{
 		
-		Adapt the model so it records the water heights (in an array) at the same times as the measured data (you may round the measured times to whole integers to make it easier).
+			Adapt the model so it records the water heights (in an array) at the same times as the measured data (you may round the measured times to whole integers to make it easier).
+		}
+	
+		\subsection{Functions: Average/Mean}
+		The average or mean, as we all recall, is the sum of all the values divided by the number of values ($n$). Equation-wise, if we have a set of height ($h$) values it looks like:
+		\begin{equation}
+			\text{average} = \frac{\sum h}{n}
+		\end{equation}
+		\assignment{
+			
+			Write a function that can find the average value of all the values in an array. There is a built in average function, but don't use it because you'll need to practice going through loops and finding sums for the rest of these assignments.
+		}
 		
 		\subsection{Sum of the errors/residuals}
-		\textbf{Assignment \qn}: 
 		
-		Write a function that takes the measured heights and the corresponding modeled heights and returns the \textbf{sum of all the errors} ($e$). The \textit{error} is simply the difference between the measured and the modeled value. The error is sometimes referred to as the \textbf{residual}.
+		The \textit{error} is simply the difference between the measured and the modeled value. The error is sometimes referred to as the \textbf{residual}.
 		\begin{equation}
 			e = h_{measured} - h_{modeled}
 		\end{equation}
-		so your function should return the sum of all the errors ($E$):
+		The sum of all the errors ($E$) can give an idea of how well you model matches the actual data. 
 		\begin{equation}
 			E = \sum e = \sum (h_{measured} - h_{modeled})
 		\end{equation}
 	
-		\subsection{Differences from the mean}
-		\textbf{Assignment \qn}:
+		\assignment{
 		
-		Write a function that finds the sum of all the differences between the measured heights and their mean ($\mu$).
+			Write a function that takes the measured heights and the corresponding modeled heights and returns the \textbf{sum of all the errors} ($e$). 
+		}
+			
+		\subsection{Absolute Error}
+		
+		As you may have noticed, the sum of the errors is not the best measure of how good your model fits the measured data because, if you have two errors in opposite directions, they can cancel each other out, resulting in a low error value. 
+		
+		To account for this problem, you can get the sum of the absolute values of the errors ($S_{abs}$).
 		\begin{equation}
-			D = \sum (h_{measured} - \mu)
+			S_{abs} = \sum | h_{measured} - h_{modeled} |
 		\end{equation}
+		\assignment{
+			Write a function that finds the sum of the absolute values of the errors.
+		}
+	
+		
+		\subsection{Sum of the errors squared}
+		
+		Another alternative to using the absolute value is to square the error instead. This achieves the same goal of making all the errors positive so the sum of the error squared ($S_{sq}$) is a decent metric of the model's fit. 
+		
+		\begin{equation}
+			S_{sq} = \sum  (h_{measured} - h_{modeled})^2
+		\end{equation}
+		\assignment{
+			Write a function that finds the sum of the square of the errors.
+			
+			Adjust the parameters in your model to get the lowest $S_{sq}$ value you can.
+		}
+	
+		
+		
+	
+		\subsection{Differences from the mean}
+		We adjust the parameters in our model to minimize the sum of the errors squared ($S_{sq}$) to find the best fit, we are calibrating the model. But while this is a good way of calibrating this specific model, it's does not allow us to see how well the model matches the data in the broader scheme of things: How does this model of water draining compare to other models where the tank is a different size or shape for example.
+		
+		To get around this we can try to \textit{nomralize} $S_{sq}$. The convention is to divide it by the differences of the measured values from their mean ($/mu$) squared:
+		
+		Where:
+		\begin{align}
+			\mu &= \text{average of the measured data} \\
+			    &=  \frac{\sum h_{measured}}{n}
+		\end{align}
+	
+		Therefore the sum of the differences squared is:
+		\begin{equation}
+			D_{sq} = \sum (h_{measured} - \mu)^2
+		\end{equation}
+
+		You already have a function that finds the mean/average, now:
+		\assignment{
+		
+			Write a function that finds the sum of all the differences between the \textbf{measured} heights and their mean).
+			
+		}
 	
 		\subsection{$r^2$}
-		\textbf{Assignment \qn}:
+		Finally, we can find the regression coefficient. A regression coefficient of 1 is a perfect fit.
+		\assignment{
 		
-		The regression coefficient ($r^2$) is given by one minus the sum of all the errors squared divided by the sum of the differences from the mean squared:
-		\begin{equation}
-			r^2 = 1 - \frac{E^2}{D^2}
-		\end{equation}
-		Write a function that calculates the $r^2$ value.
+			The regression coefficient ($r^2$) is given by one minus the sum of all the errors squared divided by the sum of the differences from the mean squared:
+			\begin{equation}
+				r^2 = 1 - \frac{S_{sq}}{D_{sq}}
+			\end{equation}
+			Write a function that calculates the $r^2$ value.
+		}
 	
 	
 	\section{Draining Calibration}
@@ -754,7 +815,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 		\end{table}
 	
 	\assignment{
-		Use this experimental data to calibrate the draining portion of the model.
+		Use this experimental data to calibrate the draining portion of the model. Now you're trying to get the regression coefficient as close to 1 as possible.
 	}
 	
 	
@@ -944,14 +1005,16 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
   \section{Analysis}
   
   	\subsection{Maximum Height}
-  	Assignment \qn:
+  	\assignment{
   	
-  	Have your program find the maximum height of the ball and the time when it reaches it. Compare your result to the analytical solutions (look them up).
+  		Have your program find the maximum height of the ball and the time when it reaches it. Compare your result to the analytical solutions (look them up).
+	}
 
 	\subsection{Hitting the Ground}
-	Assignment \qn:
+	\assignment{
 	
-	Have your program find the moment when the ball hits the ground.
+		Have your program find the moment when the ball hits the ground.
+	}
 	
 
 \chapter{Energy Balance Model}
