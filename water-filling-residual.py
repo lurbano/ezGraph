@@ -18,13 +18,14 @@ dt = 1
 nsteps = 30
 
 r = 2.25    # radius (cm)
-Qin = 30       # Volume inflow rate (dV/dt): (cubic cm / s)
-h = 0       # Initial height (cm)
+Qin = 25       # Volume inflow rate (dV/dt): (cubic cm / s)
+h = 5       # Initial height (cm)
 k = 0.0     # outflow rate constant
 
 # EXPERIMENTAL DATA
 x_measured = [1, 7, 12, 17, 22, 26]
 y_measured = [0, 10, 20, 30, 40, 50]
+y_modeled = []
 
 # GRAPH
 graph = ezGraphMM(xmin=0, xmax=100, 
@@ -48,9 +49,31 @@ for t in range(1, nsteps):
     dVdt = -k * h
     dh = dVdt * dt / (np.pi * r**2)
     h = h + dh
+    
+    if (modelTime in x_measured):
+        #print(modelTime, h)
+        y_modeled.append(h)
 
     graph.addModeled(modelTime, h)
-    graph.wait(0.01)
+    #graph.wait(0.01)
+
+print("h_measured:", y_measured)
+print("h_modeled:", y_modeled)
+
+print(f'avg measured = {myAvg(y_measured)}')
+# calculate average values for y_measured and y_modeled
+
+
+# plot residuals
+#graph.ax.plot([x_measured[0], y_measured[0]], [x_measured[0], y_modeled[0]])
+for i in range(len(x_measured)):
+    t = x_measured[i]
+    h = y_measured[i]
+    hmod = y_modeled[i]
+    print(t,h,hmod)
+    x = [t, t]
+    y = [h, hmod]
+    graph.ax.plot(x,y)
 
 # DRAW GRAPH
 graph.keepOpen()

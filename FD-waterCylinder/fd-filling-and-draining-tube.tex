@@ -36,17 +36,20 @@
 % listings
 \usepackage{listings}
 
+\renewcommand{\lstlistingname}{\textbf{Code}}% Listing -> Algorithm
+\renewcommand{\lstlistlistingname}{List of \lstlistingname s}% List of Listings -> List of Algorithms
+
 % General Setting of listings
 \lstset{
 	aboveskip=1em,
 	breaklines=true,
 	abovecaptionskip=-6pt,
-	captionpos=b,
+	captionpos=t,
 	escapeinside={\%*}{*)},
 	frame=single,
 	numbers=left,
 	numbersep=15pt,
-	numberstyle=\tiny,
+	numberstyle=\small,
 }
 % 0. Basic Color Theme
 \lstdefinestyle{colored}{ %
@@ -364,7 +367,6 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	
 	\subsubsection{Code with Graphical Output}
 	
-		\textit{water-filling-fd.py}
 		\begin{tikzpicture}[remember picture,overlay,shift={(current page.east)}]
 			\node[anchor=north east,xshift=-1cm](fillingOutput){
 				\includegraphics[height=5cm]{water-filling-fd.png} 
@@ -372,8 +374,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 			\node[inner sep=0pt,text width=0.5\linewidth] (myCaption) [below=of myImage]
 			{\captionof{figure}{\label{fillingModel} Model output: Graph of height of water in the column over time when filling the cylinder.  }};
 		\end{tikzpicture}
-	
-		\lstinputlisting[language=Python, frame=single]{../water-filling-fd.py}
+		\lstinputlisting[language=Python, frame=single, label={code:water-filling-noGraph}, caption={Model of a filling tube with graphical output (\textit{water-filling.py})}]{../water-filling-fd.py}
 
 	
 	
@@ -387,8 +388,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	\subsection{Code without Graphical Output}
 	A stripped down version of the code with no graph and no external modules except "math".
 	
-	\textit{water-filling-fd-noGraph.py}
-	\lstinputlisting[language=Python, frame=single]{../water-filling-fd-noGraph.py}
+	\lstinputlisting[language=Python, frame=single, label={code:water-filling-noGraph}, caption={Model of a filling tube without graphing (\textit{water-filling-fd-noGraph.py})}]{../water-filling-fd-noGraph.py}
 	
 	
 	Which should produce a table of time and height output:
@@ -538,8 +538,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	\subsection{Code: Draining}
 
 	This program is based off the filling code, but for this example we ignore the filling by setting the inflow rate to zero (\textbf{Line 12}). We're using an initial height of 50 cm ($h_0 = 50$), and set the constant $k$ to be equal to one. 
-	
-	\textit{water-draining-fd.py}
+
 	\begin{tikzpicture}[remember picture,overlay,shift={(current page.east)}]
 		\node[anchor=north east,xshift=-1cm](myImage){
 			\includegraphics[height=5cm]{water-draining-fd.png} 
@@ -548,7 +547,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 		{\captionof{figure}{\label{drainingModel} Model output: Graph of height of water in the column over time when draining the cylinder via a hole in the bottom.  }};
 	\end{tikzpicture}
 	
-	\lstinputlisting[language=Python, frame=single]{../water-draining-fd.py}
+	\lstinputlisting[language=Python, frame=single, label={code:water-filling-noGraph}, caption={Model of water draining from a tube (\textit{water-draining-fd.py})}]{../water-draining-fd.py}
 	
 	
 	The output from the model (Fig. \ref{drainingModel}) looks like an exponential decay curve, which is what we will find from the analytical solution (Eqn. \ref{analyticalDraining}).
@@ -651,6 +650,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 			{\captionof{figure}{\label{drainingModel} Experimental data from filling the cylinder. Data by Blas. }};
 		\end{tikzpicture}	
 		\begin{table}[h!]
+			\label{table:filling_data}
 			\centering
 			\begin{tabular}{||c | c||} 
 				\hline
@@ -685,20 +685,69 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	\end{figure}
 	
 	In order to produce this graph, we use the \textit{ezGraphMM} class, which allows us to plot the measured and modeled data separately. The full code is here:
+	\vspace{1em}
 	
-	\textit{water-filling-calibration.py}
-	\lstinputlisting[language=Python, frame=single]{../water-filling-calibration.py}
+	\lstinputlisting[language=Python, frame=single, label={code:water-filling-calibration}, caption={Model showing measured data and modeled output. (\textit{water-filling-calibration.py})}]{../water-filling-calibration.py}
 	
 	
 	\section{How Good are Our Results: Finding the r$^2$ Value}
 	
 		To determine how good a match we have (instead of just eyeballing it) we'll calculate the regression coefficient ($r^2$) value using a series of assignments.
+		
+	\subsection{Residuals (a.k.a. Errors)}
+		\begin{tikzpicture}[remember picture,overlay,shift={(current page.east)}]
+			\node[anchor=north east,xshift=-1cm](myImage){
+				\includegraphics[width=6cm]{residual1.png} 
+			};
+			\node[inner sep=0pt,text width=0.5\linewidth] (myCaption) [below=of myImage]
+			{\captionof{figure}{\label{fig:residual} The error (or residual) is the difference between the measured and modeled value at a given point in time. These are shown as the vertical lines.   }};
+		\end{tikzpicture}	
+		The \textit{residual}, also sometimes called the \textit{error} is the difference between the value the model predicts and the actual measured values. This is shown in Figure \ref{fig:residual}. The worse the model prediction, the greater the error. 
+		
+		We need to add up all the errors in such a way as the resulting value tells us how good the model fits the data.
+		
+		
+		
 	
 		\subsection{Selecting time data}
-		\assignment{
+		The first thing we need to do is have the model record its predictions at each point in time when there was a measurement taken (see Table \ref{table:filling_data}). 
 		
+		The objective is to have three lists: one of times (x values) when height was measured; one of measured heights; and one of modeled heights. In the parlance of the code above (Code  \ref{code:water-filling-calibration}) we already have the time ("x\_measured") and measured heights ("y\_measured") data. 
+			\begin{lstlisting}[]
+x_measured = [1, 7, 12, 17, 22, 26]	
+y_measured = [0, 10, 20, 30, 40, 50]
+			\end{lstlisting}
+		We now just need to collect the modeled data.
+		
+	
+		\assignment{
 			Adapt the model so it records the water heights (in an array) at the same times as the measured data (you may round the measured times to whole integers to make it easier).
 		}
+		The code that produced Figure \ref{fig:residual}, uses $Q = 25$ and an initial height value of $h = 5$ which produces a list of modeled heights ("y\_modeled") that look like this.
+		\begin{lstlisting}[]
+[6.57, 16.00, 23.86, 31.72, 39.58, 45.87]
+		\end{lstlisting}
+	
+		Thus a complete table of the time, measured heights, and modeled heights would look like this:
+		
+		\begin{table}[h!]
+			\label{table:filling_data}
+			\centering
+			\begin{tabular}{||c | c | c||} 
+				\hline
+				time (s) & height measured (cm) & height modeled (cm)\\ [0.5ex] 
+				\hline\hline
+				1	& 0 & 6.57 \\
+				7	& 10 & 16.00 \\
+				12	& 20 & 23.86 \\
+				16.8	& 30 & 31.72 \\
+				21.5	& 40 & 39.58 \\
+				26.2	& 50 & 45.87 \\ [1ex] 
+				\hline
+			\end{tabular}
+			\caption{Combined time, measured data, and modeled data.}
+		\end{table}
+		
 	
 		\subsection{Functions: Average/Mean}
 		The average or mean, as we all recall, is the sum of all the values divided by the number of values ($n$). Equation-wise, if we have a set of height ($h$) values it looks like:
@@ -706,7 +755,6 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 			\text{average} = \frac{\sum h}{n}
 		\end{equation}
 		\assignment{
-			
 			Write a function that can find the average value of all the values in an array. There is a built in average function, but don't use it because you'll need to practice going through loops and finding sums for the rest of these assignments.
 		}
 		
@@ -766,7 +814,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 			    &=  \frac{\sum h_{measured}}{n}
 		\end{align}
 	
-		Therefore the sum of the differences squared is:
+		Therefore the sum of the differences from the mean squared is:
 		\begin{equation}
 			D_{sq} = \sum (h_{measured} - \mu)^2
 		\end{equation}
@@ -789,10 +837,10 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 			Write a function that calculates the $r^2$ value.
 		}
 	
-	
+	\newpage
 	\section{Draining Calibration}
-		\begin{tikzpicture}[remember picture,overlay,shift={(current page.east)}]
-			\node[anchor=north east,xshift=-1cm](myImage){
+		\begin{tikzpicture}[remember picture,overlay,shift={(current page.north east)}]
+			\node[anchor=north east,xshift=-1cm, yshift=-5cm](myImage){
 				\includegraphics[width=6cm]{draining-data.pdf} 
 			};
 			\node[inner sep=0pt,text width=0.5\linewidth] (myCaption) [below=of myImage]
@@ -822,7 +870,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	
 
 	
-	
+	\newpage
 	\section{Breaking the Model}
 		Experiment by changing the parameters to find the limits of the model. Questions to ask are:
 		
@@ -998,7 +1046,7 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 	\subsection{Code}
 	The final code may look like this:
 
-	\lstinputlisting[language=Python, frame=single]{../ball.py}
+	\lstinputlisting[language=Python, frame=single, label={code:ball_projectile}, caption={Projectile motion. (\textit{ball.py}).}]{../ball.py}
 	
 
 
@@ -1020,6 +1068,11 @@ The water flows in at a constant rate of 5 cm$^3$/s. The inflow rate ($Q$) can b
 \chapter{Energy Balance Model}
 
 	If there were no atmosphere, what would the average temperature at the surface of the Earth?
+
+
+\chapter{Notes}
+
+
 
  % Stop your text
  \end{document}
