@@ -1,0 +1,21 @@
+Model:
+- A representation of the real world. 
+-- Requires some data about the real world.
+- Analytical model: Equation or function that represents (best fits) the data.
+-- Linear, polynomial, exponential, sinusoidal, logarithmic, hyperbolic, radical
+-- Plug in an input and the equation gives the output
+--- h(t) = 2 t + 7
+---- input: t
+---- output: h
+-- Only works for well behaved systems (simple systems). Not a whole lot of interactions that will introduce errors. Non-chaotic.
+-- Often use calculus to find the equations. 
+- Physical models -
+-- Small scale physical thing (you can touch it)
+-- Can be more complex
+-- Problems with scaling.
+- Numerical models
+-- Usually computer models because there's a lot of calculations (algebraic)
+-- Usually break the system into smaller parts that interact with each other.
+-- The computer is used to keep track of all the interactions.
+-- We'll focus on things that change over time. 
+-- We'll focus on finite difference models. 
