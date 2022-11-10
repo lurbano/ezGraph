@@ -7,17 +7,17 @@ from uStats import *
 
 # PARAMETERS
 dt = 1
-nsteps = 30
+nsteps = 160
 
 r = 2.25    # radius (cm)
-Qin = 30       # Volume inflow rate (dV/dt): (cubic cm / s)
-h = -2       # Initial height (cm)
-k = 0.0     # outflow rate constant
+Qin = 0       # Volume inflow rate (dV/dt): (cubic cm / s)
+h = 50       # Initial height (cm)
+k = 0.15     # outflow rate constant
 
 # EXPERIMENTAL DATA
-x_measured = [1, 7, 12, 17, 22, 26]
-y_measured = [0, 10, 20, 30, 40, 50]
-y_modeled = []
+x_measured = [0, 28, 60, 101, 157]
+y_measured = [50, 40, 30, 20, 10]
+y_modeled = [h]
 
 # GRAPH
 graph = ezGraphMM(xmin=0, xmax=100, 
