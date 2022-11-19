@@ -871,7 +871,7 @@ y_measured = [0, 10, 20, 30, 40, 50]
 
 	
 	\newpage
-	\section{Breaking the Model}
+	\section{Testing the Model}
 		Experiment by changing the parameters to find the limits of the model. Questions to ask are:
 		
 		\begin{enumerate}
@@ -880,6 +880,9 @@ y_measured = [0, 10, 20, 30, 40, 50]
 		\end{enumerate}
 	
 		What you should find is that at for some values the model starts to oscillate out of control. This is one of the limitations of finite difference models. It requires pretty extreme settings in this example, but other models the unstable parameter values can be much closer to the values we want to use.
+		
+	\subsection{dt}
+		What happens if you change the timestep in the model?
 	
 	
 \chapter{Expanding the Model}
@@ -915,7 +918,7 @@ y_measured = [0, 10, 20, 30, 40, 50]
 		\textbf{Model Equilibrium}: Now, if you have not already, set the inflow value and $k$ coefficient to the values you got from your calibrations and determine the equilibrium height of water in the tube. 
 		
 		\assignment{
-			Adapt the model to stop when it reaches equilibrium not after a specified time as we have been doing before.
+			Adapt the model to stop when it reaches equilibrium not after a specified time as we have been doing before. Use and inflow rate of 30 cm$^3$/s and a drainage coefficient ($k$) of 0.15.
 		}
 		
 	\section{Time-variable Inputs: Changing Inflow}
@@ -924,7 +927,7 @@ y_measured = [0, 10, 20, 30, 40, 50]
 
 	\assignment{
 	
-		Adapt the model so that the water input stops after 50 seconds. Use the calibrated fill rate ($Q_{in}$) for the initial inflow rate, and allow the model to drain using the calibrated $k$ coefficient.
+		Adapt the model so that the water input stops after 50 seconds. Use a fill rate ($Q_{in}$) of 30 cm$^3$/s for the initial inflow rate, and allow the model to drain using the calibrated $k$ coefficient.
 	}
 		
 	\subsection{Variable Inflow}
@@ -932,7 +935,7 @@ y_measured = [0, 10, 20, 30, 40, 50]
 	Gradually slowing inflow:
 	\assignment{
 		
-		Change the model so that the water input decreases linearly over time, with an initial inflow rate of 10 cm$^3$/s and a change of -0.1 cm$^3$/s in every second. Note: Watch out for negative inflows.
+		Change the model so that the water input decreases linearly over time, with an initial inflow rate of 30 cm$^3$/s and a change of -0.1 cm$^3$/s in every second. Note: Watch out for negative inflows.
 		
 		Allow the model to drain using the calibrated $k$ value.
 		\textbf{Challenge}: Have the model identify the maximum height of water in the column.
@@ -942,7 +945,7 @@ y_measured = [0, 10, 20, 30, 40, 50]
 	Fluctuating inflow--step-wise function:
 	\assignment{
 		
-		Change the model so that the water input alternatingly turns on at 10 cm$^3$/s for 5 seconds and then turns off for 5 seconds.
+		Change the model so that the water input alternatingly turns on at 30 cm$^3$/s for 20 seconds and then turns off for 20 seconds.
 		Allow the model to drain using the calibrated $k$ value.
 		
 		\textit{Have the model print out each maximum and minimum height.}
@@ -953,13 +956,14 @@ y_measured = [0, 10, 20, 30, 40, 50]
 	
 		Change the model so that the water input varies in a sinusoidal (wave) pattern with the function:
 		\begin{equation}
-			Q = 10 \sin{(5t)} + 11
+			Q = 10 \sin{(50t)} + 11
 		\end{equation}
 	
 		Allow the model to drain using the calibrated $k$ value.
 		
-		\textit{Have the model print out each maximum and minimum height.}
+		\textit{Have the model print out each maximum and minimum height. Determine if the inflow ($Q_{in}$) and height ($h$) are in phase.}
 	}
+
 
 
 	\subsection{DYO Simulation}
@@ -995,6 +999,56 @@ y_measured = [0, 10, 20, 30, 40, 50]
 				\caption{Conical water container.}
 			\end{center}
 		\end{figure}
+	
+	
+	
+\chapter{Solving Differential Equations}
+
+	What we've been doing in the preceding chapters is, basically, solving differential equations. You're given an equation for the rate of change of something (height changes with time), and an initial value, and then have to see how the system evolves over time. 
+	
+	\section{Constant change}
+	
+	What if the rate of change is constant: our quantity changes at the same rate everywhere. For example:
+	
+	\begin{equation}
+		\frac{dy}{dx} = \frac{1}{2}
+	\end{equation}
+
+	\begin{tikzpicture}[remember picture,overlay,shift={(current page.east)}]
+		\node[anchor=north east,xshift=-1cm](myImage){
+			\includegraphics[height=5cm]{constant-slope-line.png} 
+		};
+		\node[inner sep=0pt,text width=0.5\linewidth] (myCaption) [below=of myImage]
+		{\captionof{figure}{\label{constSlopeLine} A function with a constant slope of $\frac{1}{2}$. }};
+	\end{tikzpicture}
+
+	A function with a constant slope everywhere must be a straight line. 
+	
+	Of course, there are many, many straight lines with the same slope. We need to know a single point to be able to pick a specific line. 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \chapter{Ballistic Motion: A ball in the Air}

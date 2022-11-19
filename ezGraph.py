@@ -18,13 +18,15 @@ class ezGraph:
         self.ax.set_xlabel(self.xLabel)  # label axes
         self.ax.set_ylabel(self.yLabel)  # label axes
 
-    def add(self, x, y):
+    def add(self, x, y, line=True, scatter=True):
         self.x.append(x)
         self.y.append(y) 
         self.clear()
         self.setLabels()
-        self.ax.plot(self.x, self.y)               # put data into plot
-        self.ax.scatter(self.x, self.y)
+        if line:
+            self.ax.plot(self.x, self.y)               # put data into plot
+        if scatter:
+            self.ax.scatter(self.x, self.y)
 
     def plot(self, y, dx=1):
         self.x = np.ones(y.shape) 
